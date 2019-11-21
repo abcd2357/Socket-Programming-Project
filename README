@@ -1,0 +1,57 @@
+1. Name: Kangyan Xu
+2. ID: 998
+3. Tasks done in the assignment:
+   Read "Beej's Guide to Network Programming" chapter 5,6 to learn how to do socket programming.
+   Using C to code and realize all three phases required in the project.
+
+4. Code Files & their functions:
+   1) Makefile:
+      For running the project.
+   2) client.c：
+      Read the input (Map ID, Starting Node ID, File Size), connect AWS, send inputs and
+      receive the results from AWS via TCP.
+   3) aws.c:
+      Communicate with serverA and serverB via UDP.
+      Send Map ID and Starting Node ID to serverA and receive the shortest path lengths to other nodes.
+      Send shortest path lengths, File Size, Propagation Speed, Transmission Speed to ServerB and receive delays.
+   4）serverA.c:
+      Construct the map, "struct" is used here, different node IDs are detected and sorted (by Index).
+      Dijkstra Algorithm is performed to find the shortest paths.
+   5) serverB.c:
+      Calculate the Transmission Delay, Propagation Delay and End-to-end Delay for all the shortest paths.
+
+5. The format of all the messages exchanged:
+   1) Client --> AWS:
+      Char array Map_ID[1]
+      integer Source_Vertex_Index
+      integer File_Size
+   2) AWS --> Server A:
+      Char array Map_ID[1]
+      integer Source_Vertex_Index
+   3) Server A --> AWS:
+      integer size (Number of nodes in the corresponding map)
+      integer array path[2*size] (Destination IDs, corresponding shortest lengths)
+      double SpeedP (Corresponding Propagation Speed)
+      double SpeedT (Corresponding Transmission Speed)
+   4) AWS --> ServerB:
+      integer File_Size
+      integer size
+      integer array path[2*size]
+      double SpeedP
+      double SpeedT
+   5) ServerB --> AWS:
+      double array delay[size] (Corresponding End-to-end Delays for each Destination)
+      double array Tp[size] (Corresponding Propagation Delays for each Destination)
+      double array Tt[size] (Corresponding Transmission Delays for each Destination)
+   6) AWS --> Client:
+      double array result[226] (Number of nodes (integer size), Destination IDs, Min Lengths, Tts, Tps, Delays)
+
+6. Idiosyncrasy of this project:
+   Structs and arrays are widely used.
+   Less than 10 maps in the map.txt is acceptable.
+   Node ID (aka Vertex Index) less than 40000 is acceptable.
+
+7. Reused Code:
+   Socket parts: "Beej's Guide to Network Programming" is referenced, mainly demo codes in chapter 6.
+   Dijkstra parts: Website (https://www.cnblogs.com/skywang12345/p/3711512.html) is referenced.
+   The structure of codes is cleraly indicated in the C files.
