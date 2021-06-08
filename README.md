@@ -56,8 +56,10 @@
    Dijkstra parts: Website (https://www.cnblogs.com/skywang12345/p/3711512.html) is referenced.
    The structure of codes is cleraly indicated in the C files.
 
-<br /><br />
-<div align=center><img src="https://github.com/abcd2357/Socket-Programming-Project/blob/master/Demo.PNG" width="600"/></div><br />
 <br />
-<div align=center><img src="https://github.com/abcd2357/Socket-Programming-Project/blob/master/Display.PNG" width="600"/></div><br />
+<div align=center><img src="https://github.com/abcd2357/Socket-Programming-Project/blob/master/Display.PNG" width="700"/></div><br />
 <br />
+<div align=center><img src="https://github.com/abcd2357/Socket-Programming-Project/blob/master/Demo.PNG" width="700"/></div><br />
+<br />
+
+
